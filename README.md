@@ -24,6 +24,10 @@ archive/v1/             ancienne version du site (+ scripts de build / charte)
 
 Polices chargées depuis Google Fonts : Bricolage Grotesque, Instrument Sans, JetBrains Mono.
 
+Couleurs : bleu `#2F5FE8` (principale) et orange `#FF7A3D` (secondaire, variables `--warm*` dans `site.css`).
+L’orange signale ce qui demande l’attention : populaire, places limitées, priorités du diagnostic, sur-mesure, avis.
+En texte sur fond clair, utiliser `--warm-ink` (`#C2410C`) pour respecter le contraste AA.
+
 ## Interactions
 
 - **Diagnostic 360** : tous les boutons « Faire un diagnostic » ouvrent un questionnaire en 6 questions ; le radar se redessine à chaque réponse et une catégorie est recommandée.
