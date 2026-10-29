@@ -695,6 +695,242 @@
     });
   });
 
+  /* ---------- Lecteur e-learning (démo) ---------- */
+  run('player', () => {
+    const root = $('[data-player]');
+    if (!root) return;
+    const lessons = $$('.lesson', root);
+    const title = $('[data-lesson-title]', root);
+    const kicker = $('[data-lesson-kicker]', root);
+    const time = $('[data-lesson-time]', root);
+    const track = $('.player__track i', root);
+    const playBtn = $('.player__play', root);
+    const progress = $('.course-progress__track i', root);
+    const progressLabel = $('[data-course-label]', root);
+    const SPEED = 40; // la démo avance 40 fois plus vite que le temps réel
+    let idx = Math.max(0, lessons.findIndex(l => l.classList.contains('is-current')));
+    let t = 0, playing = false, userPaused = false, last = 0, raf = 0;
+
+    const dur = l => Number(l.dataset.min) * 60;
+    const fmt = s => `${pad(Math.floor(s / 60))}:${pad(Math.floor(s % 60))}`;
+    const render = () => {
+      const lesson = lessons[idx];
+      track.style.width = `${(t / dur(lesson)) * 100}%`;
+      time.textContent = `${fmt(t)} / ${fmt(dur(lesson))}`;
+      const done = lessons.filter(l => l.classList.contains('is-done')).length;
+      const pct = Math.min(100, Math.round(((done + t / dur(lesson)) / lessons.length) * 100));
+      progress.style.width = `${pct}%`;
+      progressLabel.textContent = `${pct} %`;
+    };
+    const select = i => {
+      idx = i;
+      t = 0;
+      lessons.forEach((l, k) => {
+        l.classList.toggle('is-current', k === i);
+        if (k === i) l.setAttribute('aria-current', 'step'); else l.removeAttribute('aria-current');
+      });
+      title.textContent = $('strong', lessons[i]).textContent;
+      kicker.textContent = `LEÇON ${i + 1} / ${lessons.length} · ${$('small', lessons[i]).textContent.toUpperCase()}`;
+      render();
+    };
+    const frame = now => {
+      if (!playing) return;
+      t += ((now - last) / 1000) * SPEED;
+      last = now;
+      if (t >= dur(lessons[idx])) {
+        lessons[idx].classList.add('is-done');
+        const next = lessons.findIndex((l, k) => k > idx && !l.classList.contains('is-done'));
+        if (next < 0) {
+          // Fin du module : on relance la démo depuis la 2e leçon
+          lessons.forEach((l, k) => l.classList.toggle('is-done', k === 0));
+          select(1);
+        } else select(next);
+      }
+      render();
+      raf = requestAnimationFrame(frame);
+    };
+    const setPlaying = state => {
+      playing = state;
+      root.classList.toggle('is-playing', state);
+      playBtn.setAttribute('aria-label', state ? 'Mettre la leçon en pause' : 'Lire la leçon');
+      cancelAnimationFrame(raf);
+      if (state) { last = performance.now(); raf = requestAnimationFrame(frame); }
+    };
+    playBtn.addEventListener('click', () => { userPaused = playing; setPlaying(!playing); });
+    lessons.forEach((l, i) => l.addEventListener('click', () => { userPaused = false; select(i); setPlaying(true); }));
+    select(idx);
+    if (!reduceMotion) whenVisible(root, v => { if (!v) setPlaying(false); else if (!userPaused) setPlaying(true); }, { once: false, margin: '0px' });
+  });
+
+  /* ---------- Carte de France ---------- */
+  run('map', () => {
+    const root = $('[data-reach]');
+    if (!root) return;
+    const map = $('.fr-map', root);
+    const svg = $('svg', map);
+    const card = $('.map-card', root);
+    const chips = $$('.city-chip', root);
+    const tabs = $$('.seg button', root);
+    const NS = 'http://www.w3.org/2000/svg';
+
+    // Projection simple (équirectangulaire corrigée à 46,5° N), en unités du viewBox 620 × 610.
+    const K = 60, LON0 = -5.4, LAT0 = 51.4, COS = Math.cos(46.5 * Math.PI / 180);
+    const P = (lat, lon) => [(lon - LON0) * COS * K, (LAT0 - lat) * K];
+
+    // Contour simplifié (lat, lon) : France métropolitaine puis Corse.
+    const MAINLAND = [
+      [51.08, 2.54], [50.82, 2.63], [50.78, 3.1], [50.72, 3.25], [50.48, 3.62], [50.3, 4.0], [50.1, 4.2], [49.98, 4.43],
+      [50.15, 4.83], [49.8, 4.86], [49.79, 5.15], [49.55, 5.5], [49.5, 5.82], [49.47, 6.37], [49.18, 6.75], [49.2, 7.1],
+      [49.07, 7.6], [48.97, 8.2], [48.6, 7.8], [48.1, 7.58], [47.6, 7.55], [47.5, 7.0], [47.28, 6.95], [47.0, 6.75],
+      [46.6, 6.12], [46.25, 5.98], [46.15, 6.25], [46.38, 6.5], [46.39, 6.8], [45.92, 7.04], [45.6, 6.95], [45.15, 6.95],
+      [44.93, 6.72], [44.6, 6.95], [44.4, 6.88], [44.15, 7.6], [43.78, 7.53], [43.7, 7.27], [43.55, 7.12], [43.42, 6.85],
+      [43.27, 6.65], [43.1, 6.35], [43.08, 5.93], [43.21, 5.42], [43.33, 5.05], [43.4, 4.85], [43.45, 4.5], [43.53, 4.13],
+      [43.4, 3.7], [43.27, 3.4], [43.0, 3.05], [42.7, 3.03], [42.48, 3.17], [42.43, 2.7], [42.5, 2.0], [42.62, 1.75],
+      [42.65, 1.45], [42.8, 0.7], [42.7, 0.0], [42.85, -0.4], [42.95, -0.75], [43.05, -1.45], [43.37, -1.79], [43.48, -1.56],
+      [44.0, -1.35], [44.65, -1.25], [45.35, -1.15], [45.6, -1.05], [46.0, -1.1], [46.15, -1.2], [46.4, -1.5], [46.72, -1.98],
+      [47.05, -2.25], [47.28, -2.2], [47.5, -2.55], [47.55, -3.1], [47.7, -3.4], [47.85, -4.05], [47.8, -4.37], [48.03, -4.7],
+      [48.3, -4.5], [48.4, -4.79], [48.65, -4.45], [48.72, -3.95], [48.83, -3.3], [48.53, -2.7], [48.65, -2.02], [48.63, -1.52],
+      [48.85, -1.58], [49.35, -1.8], [49.72, -1.94], [49.67, -1.25], [49.4, -1.15], [49.35, -0.6], [49.3, -0.1], [49.47, 0.12],
+      [49.76, 0.37], [49.93, 1.08], [50.2, 1.6], [50.72, 1.58], [50.95, 1.85], [51.03, 2.37]
+    ];
+    const CORSICA = [
+      [43.0, 9.4], [42.7, 9.47], [42.1, 9.55], [41.6, 9.3], [41.38, 9.2], [41.7, 8.8], [41.95, 8.62], [42.25, 8.55], [42.55, 8.75], [42.68, 9.3]
+    ];
+    const polys = [MAINLAND, CORSICA].map(poly => poly.map(([la, lo]) => P(la, lo)));
+    const inside = (x, y, poly) => {
+      let c = false;
+      for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+        const [xi, yi] = poly[i], [xj, yj] = poly[j];
+        if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c;
+      }
+      return c;
+    };
+
+    // Trame de points
+    const STEP = 11;
+    const dots = [];
+    let html = '';
+    for (let row = 0, y = STEP / 2; y < 610; row++, y += STEP * .87) {
+      for (let x = row % 2 ? STEP : STEP / 2; x < 620; x += STEP) {
+        if (polys.some(p => inside(x, y, p))) {
+          dots.push([x, y]);
+          html += `<circle class="dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/>`;
+        }
+      }
+    }
+    const outline = polys.map(p => `M${p.map(pt => pt.map(n => n.toFixed(1)).join(',')).join('L')}Z`).join('');
+    svg.innerHTML = `<path class="fr-map__outline" d="${outline}"/><g>${html}</g><g class="pins"></g>`;
+    const dotEls = $$('.dot', svg);
+    const pinsLayer = $('.pins', svg);
+
+    // Villes (lues depuis les boutons HTML)
+    const cities = chips.map((chip, i) => {
+      const [x, y] = P(Number(chip.dataset.lat), Number(chip.dataset.lon));
+      const g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'pin');
+      g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+      const left = x > 470;
+      g.innerHTML = `<circle r="16" fill="transparent"/><circle class="pin__ring" r="6" style="animation-delay:${(i * .17).toFixed(2)}s"/><circle class="pin__core" r="6"/>`
+        + `<text class="pin__label" x="${left ? -14 : 14}" y="5" text-anchor="${left ? 'end' : 'start'}">${chip.textContent}</text>`;
+      pinsLayer.append(g);
+      return { chip, pin: g, x, y, name: chip.textContent, region: chip.dataset.region };
+    });
+
+    let mode = 'inter';
+    let current = null;
+    let touring = !reduceMotion;
+    let tourTimer = 0;
+    const R = 92;
+
+    const clearDots = () => dotEls.forEach(el => {
+      el.classList.remove('lit', 'lit-near', 'warm', 'twinkle');
+      el.style.transitionDelay = '0ms';
+      el.style.animationDelay = '';
+    });
+
+    const renderCard = html => { card.innerHTML = html; };
+
+    const select = city => {
+      if (city === current && city.pin.classList.contains('is-active')) return;
+      current = city;
+      cities.forEach(c => {
+        const on = c === city;
+        c.pin.classList.toggle('is-active', on);
+        c.chip.setAttribute('aria-pressed', on);
+      });
+      pinsLayer.append(city.pin); // passe au premier plan
+      dotEls.forEach((el, i) => {
+        const d = Math.hypot(dots[i][0] - city.x, dots[i][1] - city.y);
+        el.classList.toggle('lit', d < R);
+        el.classList.toggle('lit-near', d < R * .45);
+        el.style.transitionDelay = d < R ? `${Math.round(d * 4)}ms` : '0ms';
+      });
+      renderCard(`
+        <span class="map-card__kicker">SESSIONS INTER-ENTREPRISES · ${city.region.toUpperCase()}</span>
+        <span class="map-card__title">${city.name}</span>
+        <span class="map-card__text">Prochaine session&nbsp;: [JJ/MM] · [0] sessions programmées cette année.</span>
+        <span class="map-card__facts"><span>Présentiel</span><span>Hybride</span><span>Intra possible</span></span>
+        <button type="button" class="btn btn--warm btn--xs" data-open="contact" data-subject="Sessions à ${city.name}">Demander les dates</button>`);
+    };
+
+    const setMode = (next, { keepCity = false } = {}) => {
+      mode = next;
+      map.dataset.mode = next;
+      tabs.forEach(t => t.setAttribute('aria-pressed', t.dataset.mode === next));
+      clearDots();
+      if (next === 'inter') {
+        select(keepCity && current ? current : current || cities[0]);
+      } else {
+        cities.forEach(c => { c.pin.classList.remove('is-active'); c.chip.setAttribute('aria-pressed', 'false'); });
+        if (next === 'intra') {
+          const [px, py] = P(48.86, 2.35);
+          dotEls.forEach((el, i) => {
+            el.style.transitionDelay = `${Math.round(Math.hypot(dots[i][0] - px, dots[i][1] - py) * 2.2)}ms`;
+            el.classList.add('warm');
+          });
+          renderCard(`
+            <span class="map-card__kicker">INTRA-ENTREPRISE</span>
+            <span class="map-card__title">Chez vous, partout en France</span>
+            <span class="map-card__text">Nos formateurs se déplacent dans vos locaux, dans toutes les régions de France métropolitaine, avec un programme adapté à votre contexte.</span>
+            <button type="button" class="btn btn--warm btn--xs" data-open="contact" data-subject="Demande de devis intra-entreprise">Demander un devis intra</button>`);
+        } else {
+          dotEls.forEach(el => {
+            el.style.animationDelay = `${(Math.random() * 2.6).toFixed(2)}s`;
+            el.classList.add('twinkle');
+          });
+          renderCard(`
+            <span class="map-card__kicker">À DISTANCE</span>
+            <span class="map-card__title">Classes virtuelles &amp; e-learning</span>
+            <span class="map-card__text">Accessibles où que vous soyez, sur ordinateur, tablette ou mobile, avec un formateur en direct ou à votre rythme.</span>
+            <a class="btn btn--warm btn--xs" href="index.html#elearning">Découvrir le e-learning</a>`);
+        }
+      }
+    };
+
+    const stopTour = () => { touring = false; clearInterval(tourTimer); };
+    const startTour = () => {
+      clearInterval(tourTimer);
+      if (!touring) return;
+      tourTimer = setInterval(() => {
+        if (mode !== 'inter' || document.hidden) return;
+        select(cities[(cities.indexOf(current) + 1) % cities.length]);
+      }, 2600);
+    };
+
+    cities.forEach(c => {
+      c.chip.addEventListener('click', () => { stopTour(); if (mode !== 'inter') setMode('inter'); select(c); });
+      c.pin.addEventListener('pointerenter', () => { if (mode !== 'inter') return; stopTour(); select(c); });
+      c.pin.addEventListener('click', () => { stopTour(); if (mode !== 'inter') setMode('inter'); select(c); });
+    });
+    tabs.forEach(t => t.addEventListener('click', () => { stopTour(); setMode(t.dataset.mode); }));
+
+    current = cities[0];
+    whenVisible(root, v => {
+      if (v && !map.dataset.mode) setMode('inter');
+      if (v) startTour(); else clearInterval(tourTimer);
+    }, { once: false, margin: '0px 0px -15% 0px' });
+  });
+
   /* ---------- Barre d'inscription collante ---------- */
   run('buybar', () => {
     const bar = $('.buybar');
