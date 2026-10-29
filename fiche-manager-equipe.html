@@ -2,100 +2,124 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skill360 — Manager une équipe au quotidien</title>
+<meta name="description" content="Trois jours pour poser les bases d’un management clair : organiser le travail, fixer des objectifs, motiver et faire grandir chaque membre de l’équipe.">
+<meta name="theme-color" content="#0B1130">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Instrument+Sans:wght@400..700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
-<style>
-body{margin:0;background:#FFFFFF}
-a{color:#2F5FE8}a:hover{color:#1E3FB0}
-</style>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__s360)document.documentElement.classList.remove('js')},2500)</script>
+<script src="assets/js/site.js" defer></script>
 </head>
 <body>
-<div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #0B1130; background: #FFFFFF; overflow: hidden">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+</svg>
 
-<header style="max-width: 1280px; margin: 0 auto; padding: 26px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
-<a href="index.html" aria-label="Skill360, retour à l’accueil" style="display: block"><img src="assets/img/logo-skill360.png" alt="Skill360" style="height: 38px; width: auto; display: block"></a>
-<nav aria-label="Navigation principale" style="display: flex; gap: 32px; flex-wrap: wrap; font-size: 16px; font-weight: 500">
-<a href="formations.html" style="color: #2F5FE8; text-decoration: none; font-weight: 700; border-bottom: 2px solid #2F5FE8; padding-bottom: 4px">Formations</a>
-<a href="index.html" style="color: #0B1130; text-decoration: none">Méthode 360</a>
-<a href="index.html" style="color: #0B1130; text-decoration: none">Entreprises</a>
-<a href="index.html" style="color: #0B1130; text-decoration: none">Témoignages</a>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+<div class="site-header__inner">
+<a class="logo" href="index.html" aria-label="Skill360, retour à l’accueil"><img src="assets/img/logo-skill360.png" alt="Skill360"></a>
+<div class="menu" id="menu">
+<nav class="nav" aria-label="Navigation principale">
+<a href="formations.html" aria-current="page">Formations</a>
+<a href="index.html#methode">Méthode 360</a>
+<a href="index.html#pourqui">Entreprises</a>
+<a href="index.html#temoignages">Témoignages</a>
 </nav>
-<div style="display: flex; gap: 8px; align-items: center">
-<a href="#connexion" style="font-size: 15px; font-weight: 600; color: #0B1130; text-decoration: none; padding: 12px 14px">Espace apprenant</a>
-<button type="button" style="font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; background: #0B1130; border: 0; border-radius: 12px; padding: 13px 22px; min-height: 46px; cursor: pointer">Nous contacter</button>
+<div class="header-actions">
+<a class="header-link" href="#connexion">Espace apprenant</a>
+<button type="button" class="btn btn--dark btn--sm" data-open="contact" data-magnetic>Nous contacter</button>
+</div>
+</div>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
 </div>
 </header>
 
-<section style="max-width: 1280px; margin: 0 auto; padding: 0 32px 72px; display: flex; flex-direction: column; gap: 28px">
-<nav aria-label="Fil d’Ariane" style="font-size: 14px; color: #4C5375">
-<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
-<li><a href="index.html" style="color: #4C5375">Accueil</a></li>
+<main id="main">
+
+<section class="wrap" style="padding-bottom:72px; display:flex; flex-direction:column; gap:28px">
+<nav class="crumbs" aria-label="Fil d’Ariane" data-reveal="fade">
+<ol>
+<li><a href="index.html">Accueil</a></li>
 <li aria-hidden="true">/</li>
-<li><a href="formations.html" style="color: #4C5375">Formations</a></li>
+<li><a href="formations.html">Formations</a></li>
 <li aria-hidden="true">/</li>
-<li><a href="categorie-management-leadership.html" style="color: #4C5375">Management &amp; leadership</a></li>
+<li><a href="categorie-management-leadership.html">Management &amp; leadership</a></li>
 <li aria-hidden="true">/</li>
-<li aria-current="page" style="font-weight: 600; color: #0B1130">Manager une équipe au quotidien</li>
+<li aria-current="page">Manager une équipe au quotidien</li>
 </ol>
 </nav>
 
-<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
-<div style="flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #2F5FE8"><span aria-hidden="true" style="width: 40px; height: 2px; background: #2F5FE8; display: block"></span>MANAGEMENT &amp; LEADERSHIP · RÉF. [000]</p>
-<h1 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 76px; line-height: 0.96; letter-spacing: -0.045em; font-weight: 700">Manager une équipe au quotidien<span aria-hidden="true" style="display: inline-block; width: 0.19em; height: 0.19em; margin-left: 0.06em; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #FFFFFF 0%, #A9E6FB 18%, #4A86F6 56%, #3A2FC2 100%)"></span></h1>
-<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #4C5375; max-width: 640px">Trois jours pour poser les bases d’un management clair&nbsp;: organiser le travail, fixer des objectifs, motiver et faire grandir chaque membre de l’équipe.</p>
-<div style="display: flex; gap: 8px; flex-wrap: wrap">
-<span style="padding: 8px 12px; border-radius: 8px; background: #EEF1FA; font-size: 14px; font-weight: 600">Présentiel</span>
-<span style="padding: 8px 12px; border-radius: 8px; background: #EEF1FA; font-size: 14px; font-weight: 600">Intra possible</span>
-<span style="padding: 8px 12px; border-radius: 8px; background: #EEF1FA; font-size: 14px; font-weight: 600">Initiation</span>
-<span style="padding: 8px 12px; border-radius: 8px; background: #EEF1FA; font-size: 14px; font-weight: 600">[Éligible au financement]</span>
+<div class="fiche-hero">
+<div class="fiche-hero__text">
+<p class="eyebrow" data-reveal>MANAGEMENT &amp; LEADERSHIP · RÉF. [000]</p>
+<h1 class="h1" data-split style="--h1:76px">Manager une équipe au quotidien<span class="orb" aria-hidden="true"></span></h1>
+<p class="lead" data-reveal style="--d:.3s; max-width:640px">Trois jours pour poser les bases d’un management clair&nbsp;: organiser le travail, fixer des objectifs, motiver et faire grandir chaque membre de l’équipe.</p>
+<div class="tags" data-stagger="60">
+<span class="tag tag--md">Présentiel</span>
+<span class="tag tag--md">Intra possible</span>
+<span class="tag tag--md">Initiation</span>
+<span class="tag tag--md">[Éligible au financement]</span>
 </div>
-<div style="display: flex; align-items: center; gap: 12px; padding-top: 8px">
-<span aria-hidden="true" style="display: flex; gap: 2px; color: #2F5FE8"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg></span>
-<span style="font-size: 15px; color: #4C5375"><strong style="color: #0B1130">[0,0]/5</strong> · [00] avis stagiaires</span>
+<div class="rating" data-reveal style="--d:.5s">
+<span class="stars" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></span>
+<span class="rating__text"><strong>[0,0]/5</strong> · [00] avis stagiaires</span>
 </div>
 </div>
 
-<aside aria-label="Informations et inscription" style="flex: 1 1 340px; min-width: 0; max-width: 400px; padding: 28px; border-radius: 28px; background: #FFFFFF; border: 1px solid #DDE1EE; box-shadow: 0 40px 80px -48px rgba(11, 17, 48, 0.45); display: flex; flex-direction: column; gap: 20px">
-<div style="display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">TARIF INTER-ENTREPRISE</span>
-<span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 44px; font-weight: 700; letter-spacing: -0.03em">[0 000] €<span style="font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 15px; font-weight: 500; color: #4C5375; letter-spacing: 0"> HT / personne</span></span>
+<aside class="booking" aria-label="Informations et inscription" data-reveal="pop" style="--d:.25s">
+<div class="price">
+<span class="mono mono--sm muted">TARIF INTER-ENTREPRISE</span>
+<strong>[0 000] €<small> HT / personne</small></strong>
 </div>
-<dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
-<div style="padding: 14px; border-radius: 14px; background: #EEF1FA"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">DURÉE</dt><dd style="margin: 4px 0 0; font-size: 16px; font-weight: 700">3 jours · 21 h</dd></div>
-<div style="padding: 14px; border-radius: 14px; background: #EEF1FA"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">GROUPE</dt><dd style="margin: 4px 0 0; font-size: 16px; font-weight: 700">[4 à 10] pers.</dd></div>
-<div style="padding: 14px; border-radius: 14px; background: #EEF1FA"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">LIEU</dt><dd style="margin: 4px 0 0; font-size: 16px; font-weight: 700">[Ville]</dd></div>
-<div style="padding: 14px; border-radius: 14px; background: #EEF1FA"><dt style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">PROCHAINE</dt><dd style="margin: 4px 0 0; font-size: 16px; font-weight: 700">[JJ/MM]</dd></div>
+<dl class="facts-grid">
+<div><dt>DURÉE</dt><dd>3 jours · 21 h</dd></div>
+<div><dt>GROUPE</dt><dd>[4 à 10] pers.</dd></div>
+<div><dt>LIEU</dt><dd>[Ville]</dd></div>
+<div><dt>PROCHAINE</dt><dd>[JJ/MM]</dd></div>
 </dl>
-<button type="button" style="font-family: inherit; font-size: 16px; font-weight: 600; color: #FFFFFF; background: #2F5FE8; border: 0; border-radius: 12px; padding: 16px 22px; min-height: 54px; cursor: pointer">S’inscrire à une session</button>
-<button type="button" style="font-family: inherit; font-size: 16px; font-weight: 600; color: #0B1130; background: #FFFFFF; border: 1.5px solid #0B1130; border-radius: 12px; padding: 16px 22px; min-height: 54px; cursor: pointer">Demander un devis intra</button>
-<a href="#programme-pdf" style="align-self: center; font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; padding: 8px 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg>Télécharger le programme (PDF)</a>
+<a class="btn" href="#sessions" data-magnetic>S’inscrire à une session</a>
+<button type="button" class="btn btn--outline" data-open="contact" data-subject="Demande de devis intra — Manager une équipe au quotidien">Demander un devis intra</button>
+<a class="dl-link" href="#programme-pdf"><svg class="i i--sm" aria-hidden="true"><use href="#i-download"/></svg>Télécharger le programme (PDF)</a>
 </aside>
 </div>
 </section>
 
-<section style="max-width: 1280px; margin: 0 auto; padding: 0 32px 88px; display: flex; flex-wrap: wrap; gap: 20px">
-<div style="flex: 1 1 520px; min-width: 0; padding: 40px; border-radius: 32px; background: #EEF1FA; display: flex; flex-direction: column; gap: 22px">
-<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 36px; line-height: 1; letter-spacing: -0.03em; font-weight: 700">Objectifs</h2>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 17px; line-height: 1.5">
-<li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #2F5FE8; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Identifier son style de management et l’adapter à chaque collaborateur</li>
-<li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #2F5FE8; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Fixer des objectifs clairs et suivre leur avancement</li>
-<li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #2F5FE8; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Animer des réunions d’équipe utiles et courtes</li>
-<li style="display: flex; gap: 12px; align-items: flex-start"><span aria-hidden="true" style="flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #2F5FE8; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Donner un feedback qui fait progresser</li>
+<section class="wrap section--sm twin">
+<div class="objectives" data-reveal>
+<h2 class="h2" style="--h2:36px">Objectifs</h2>
+<ul>
+<li><span class="tick" aria-hidden="true" style="--d:.2s"><svg class="i" style="width:14px;height:14px" aria-hidden="true"><use href="#i-check"/></svg></span>Identifier son style de management et l’adapter à chaque collaborateur</li>
+<li><span class="tick" aria-hidden="true" style="--d:.35s"><svg class="i" style="width:14px;height:14px" aria-hidden="true"><use href="#i-check"/></svg></span>Fixer des objectifs clairs et suivre leur avancement</li>
+<li><span class="tick" aria-hidden="true" style="--d:.5s"><svg class="i" style="width:14px;height:14px" aria-hidden="true"><use href="#i-check"/></svg></span>Animer des réunions d’équipe utiles et courtes</li>
+<li><span class="tick" aria-hidden="true" style="--d:.65s"><svg class="i" style="width:14px;height:14px" aria-hidden="true"><use href="#i-check"/></svg></span>Donner un feedback qui fait progresser</li>
 </ul>
 </div>
-<div style="flex: 1 1 420px; min-width: 0; padding: 40px; border-radius: 32px; background: #0E1438; color: #FFFFFF; display: flex; flex-direction: column; gap: 16px">
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
-<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 36px; line-height: 1; letter-spacing: -0.03em; font-weight: 700">Compétences visées</h2>
-<span style="display: flex; gap: 14px; font-size: 12px; color: #B9C0E0"><span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: linear-gradient(135deg, #3ED3F4, #4B3BDB)"></span>Avant</span><span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 12px; height: 0; border-top: 2px dashed #9DB4FF"></span>Après</span></span>
+<div class="panel-dark skills" data-reveal style="--d:.12s; max-width:none; margin:0">
+<div class="skills__head">
+<h2 class="h2" style="--h2:36px">Compétences visées</h2>
+<span class="seg" role="group" aria-label="Afficher le niveau">
+<button type="button" data-show="now" aria-pressed="true"><span class="swatch" aria-hidden="true"></span>Avant</button>
+<button type="button" data-show="goal" aria-pressed="false"><span class="swatch swatch--dash" aria-hidden="true"></span>Après</button>
+</span>
 </div>
-<svg viewBox="-60 -4 360 248" role="img" aria-label="Radar des compétences visées : niveau avant et après la formation" style="width: 100%; max-width: 420px; align-self: center; height: auto; display: block">
-<defs><linearGradient id="fiRadar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3ED3F4"></stop><stop offset="1" stop-color="#4B3BDB"></stop></linearGradient></defs>
-<polygon points="120,30 197.9,75 197.9,165 120,210 42.1,165 42.1,75" fill="#161D4A" stroke="#3D4790"></polygon>
-<polygon points="120,60 171.96,90 171.96,150 120,180 68.04,150 68.04,90" fill="none" stroke="#3D4790"></polygon>
-<path d="M120 120L120 30M120 120L197.9 75M120 120L197.9 165M120 120L120 210M120 120L42.1 165M120 120L42.1 75" stroke="#3D4790"></path>
-<polygon points="120,36 190.1,79.5 186.25,158.25 120,192 57.65,156 50.9,80" fill="none" stroke="#9DB4FF" stroke-width="1.6" stroke-dasharray="5 4"></polygon>
-<polygon points="120,72 159,97.5 162.9,145 120,165 81,142.5 85.2,100" fill="url(#fiRadar)" fill-opacity="0.45" stroke="url(#fiRadar)" stroke-width="2.5" stroke-linejoin="round"></polygon>
+<svg class="radar radar--dark" viewBox="-60 -4 360 248" role="img" aria-label="Radar des compétences visées : niveau avant et après la formation" data-radar="toggle" data-now=".53,.5,.55,.5,.5,.45" data-goal=".93,.9,.85,.8,.8,.89">
+<defs><linearGradient id="fiRadar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3ED3F4"/><stop offset="1" stop-color="#4B3BDB"/></linearGradient></defs>
+<polygon points="120,30 197.9,75 197.9,165 120,210 42.1,165 42.1,75" fill="#161D4A" stroke="#3D4790"/>
+<polygon points="120,60 171.96,90 171.96,150 120,180 68.04,150 68.04,90" fill="none" stroke="#3D4790"/>
+<path d="M120 120L120 30M120 120L197.9 75M120 120L197.9 165M120 120L120 210M120 120L42.1 165M120 120L42.1 75" stroke="#3D4790"/>
+<polygon class="radar__goal" data-radar-goal points="120,36 190.1,79.5 186.25,158.25 120,192 57.65,156 50.9,80" fill="none" stroke="#9DB4FF" stroke-width="1.6"/>
+<polygon data-radar-now points="120,72 159,97.5 162.9,145 120,165 81,142.5 85.2,100" fill="url(#fiRadar)" fill-opacity="0.45" stroke="url(#fiRadar)" stroke-width="2.5" stroke-linejoin="round"/>
 <g font-family="JetBrains Mono, monospace" font-size="12" fill="#B9C0E0">
 <text x="120" y="18" text-anchor="middle">Posture</text>
 <text x="204" y="70">Objectifs</text>
@@ -105,140 +129,138 @@ a{color:#2F5FE8}a:hover{color:#1E3FB0}
 <text x="36" y="70" text-anchor="end">Réunions</text>
 </g>
 </svg>
-<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #B9C0E0">Mesuré par le diagnostic 360 en début et en fin de parcours.</p>
+<p class="skills__note">Mesuré par le diagnostic 360 en début et en fin de parcours.</p>
 </div>
 </section>
 
-<section id="programme" style="max-width: 1280px; margin: 0 auto; padding: 0 32px 88px; display: flex; flex-direction: column; gap: 32px">
-<div style="display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; display: flex; align-items: center; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #2F5FE8"><span aria-hidden="true" style="width: 40px; height: 2px; background: #2F5FE8; display: block"></span>PROGRAMME</p>
-<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 56px; line-height: 1; letter-spacing: -0.035em; font-weight: 700">Trois jours, quatre modules</h2>
+<section id="programme" class="wrap section--sm" style="display:flex; flex-direction:column; gap:32px">
+<div style="display:flex; flex-direction:column; gap:16px">
+<p class="eyebrow" data-reveal>PROGRAMME</p>
+<h2 class="h2" data-split style="--h2:56px">Trois jours, quatre modules</h2>
 </div>
-<ol style="list-style: none; margin: 0; padding: 0; border-bottom: 1px solid #DDE1EE">
-<li style="border-top: 1px solid #DDE1EE; padding: 28px 0; display: flex; flex-wrap: wrap; gap: 24px">
-<span style="width: 120px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; color: #2F5FE8">MODULE 01</span><span style="font-size: 14px; color: #4C5375">Jour 1 · matin</span></span>
-<span style="flex: 1 1 480px; display: flex; flex-direction: column; gap: 12px">
-<span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.02em">Le rôle du manager</span>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; line-height: 1.5; color: #4C5375">
+<ol class="program" data-stagger="80">
+<li class="module">
+<h3><button type="button" class="module__head" aria-expanded="true" aria-controls="mod-1"><span class="module__meta"><b>MODULE 01</b><span>Jour 1 · matin</span></span><span class="module__title">Le rôle du manager</span><span class="module__icon" aria-hidden="true"></span></button></h3>
+<div class="module__panel" id="mod-1" role="region" aria-label="Module 01"><div><ul>
 <li>Missions, responsabilités et attentes de l’entreprise</li>
 <li>Autodiagnostic de son style de management</li>
 <li>Construire sa légitimité auprès de l’équipe</li>
-</ul>
-</span>
-<button type="button" aria-expanded="true" aria-label="Replier le module 01" style="width: 48px; height: 48px; border-radius: 50%; border: 0; background: #0B1130; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+</ul></div></div>
 </li>
-<li style="border-top: 1px solid #DDE1EE; padding: 24px 0; display: flex; flex-wrap: wrap; gap: 24px; align-items: center">
-<span style="width: 120px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; color: #2F5FE8">MODULE 02</span><span style="font-size: 14px; color: #4C5375">Jour 1 · après-midi</span></span>
-<span style="flex: 1 1 480px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.02em">Fixer et suivre les objectifs</span>
-<button type="button" aria-expanded="false" aria-label="Déplier le module 02" style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid #C9CFE2; background: #FFFFFF; color: #0B1130; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<li class="module">
+<h3><button type="button" class="module__head" aria-expanded="false" aria-controls="mod-2"><span class="module__meta"><b>MODULE 02</b><span>Jour 1 · après-midi</span></span><span class="module__title">Fixer et suivre les objectifs</span><span class="module__icon" aria-hidden="true"></span></button></h3>
+<div class="module__panel" id="mod-2" role="region" aria-label="Module 02"><div><ul>
+<li>[Formuler des objectifs clairs et mesurables]</li>
+<li>[Décliner les objectifs de l’équipe en objectifs individuels]</li>
+<li>[Mettre en place des points de suivi réguliers]</li>
+</ul></div></div>
 </li>
-<li style="border-top: 1px solid #DDE1EE; padding: 24px 0; display: flex; flex-wrap: wrap; gap: 24px; align-items: center">
-<span style="width: 120px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; color: #2F5FE8">MODULE 03</span><span style="font-size: 14px; color: #4C5375">Jour 2</span></span>
-<span style="flex: 1 1 480px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.02em">Communiquer, motiver, donner du feedback</span>
-<button type="button" aria-expanded="false" aria-label="Déplier le module 03" style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid #C9CFE2; background: #FFFFFF; color: #0B1130; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<li class="module">
+<h3><button type="button" class="module__head" aria-expanded="false" aria-controls="mod-3"><span class="module__meta"><b>MODULE 03</b><span>Jour 2</span></span><span class="module__title">Communiquer, motiver, donner du feedback</span><span class="module__icon" aria-hidden="true"></span></button></h3>
+<div class="module__panel" id="mod-3" role="region" aria-label="Module 03"><div><ul>
+<li>[Identifier les leviers de motivation de chacun]</li>
+<li>[Donner un feedback constructif et le recevoir]</li>
+<li>[Animer des réunions d’équipe courtes et utiles]</li>
+</ul></div></div>
 </li>
-<li style="border-top: 1px solid #DDE1EE; padding: 24px 0; display: flex; flex-wrap: wrap; gap: 24px; align-items: center">
-<span style="width: 120px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; color: #2F5FE8">MODULE 04</span><span style="font-size: 14px; color: #4C5375">Jour 3</span></span>
-<span style="flex: 1 1 480px; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.02em">Mises en situation et plan d’action</span>
-<button type="button" aria-expanded="false" aria-label="Déplier le module 04" style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid #C9CFE2; background: #FFFFFF; color: #0B1130; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<li class="module">
+<h3><button type="button" class="module__head" aria-expanded="false" aria-controls="mod-4"><span class="module__meta"><b>MODULE 04</b><span>Jour 3</span></span><span class="module__title">Mises en situation et plan d’action</span><span class="module__icon" aria-hidden="true"></span></button></h3>
+<div class="module__panel" id="mod-4" role="region" aria-label="Module 04"><div><ul>
+<li>[Jeux de rôle filmés sur des situations du quotidien]</li>
+<li>[Débriefing collectif et individuel]</li>
+<li>[Construction de son plan d’action à 90 jours]</li>
+</ul></div></div>
 </li>
 </ol>
 </section>
 
-<section aria-label="Public, prérequis et modalités" style="max-width: 1280px; margin: 0 auto; padding: 0 32px 88px; display: flex; flex-wrap: wrap; gap: 20px">
-<div style="flex: 1 1 280px; min-width: 0; padding: 28px; border-radius: 24px; border: 1px solid #DDE1EE; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #2F5FE8">PUBLIC</span>
-<span style="font-size: 16px; line-height: 1.55">Managers de proximité, chefs d’équipe et futurs managers.</span>
-</div>
-<div style="flex: 1 1 280px; min-width: 0; padding: 28px; border-radius: 24px; border: 1px solid #DDE1EE; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #2F5FE8">PRÉREQUIS</span>
-<span style="font-size: 16px; line-height: 1.55">Aucun. Un diagnostic de positionnement est réalisé avant la formation.</span>
-</div>
-<div style="flex: 1 1 280px; min-width: 0; padding: 28px; border-radius: 24px; border: 1px solid #DDE1EE; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #2F5FE8">PÉDAGOGIE</span>
-<span style="font-size: 16px; line-height: 1.55">Apports courts, études de cas, jeux de rôle filmés et plan d’action individuel.</span>
-</div>
-<div style="flex: 1 1 280px; min-width: 0; padding: 28px; border-radius: 24px; border: 1px solid #DDE1EE; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #2F5FE8">ÉVALUATION</span>
-<span style="font-size: 16px; line-height: 1.55">Diagnostic 360 avant / après, attestation de fin de formation.</span>
+<section aria-label="Public, prérequis et modalités" class="wrap section--sm">
+<div class="facts" data-stagger="80">
+<div class="fact"><span class="mono">PUBLIC</span><p>Managers de proximité, chefs d’équipe et futurs managers.</p></div>
+<div class="fact"><span class="mono">PRÉREQUIS</span><p>Aucun. Un diagnostic de positionnement est réalisé avant la formation.</p></div>
+<div class="fact"><span class="mono">PÉDAGOGIE</span><p>Apports courts, études de cas, jeux de rôle filmés et plan d’action individuel.</p></div>
+<div class="fact"><span class="mono">ÉVALUATION</span><p>Diagnostic 360 avant / après, attestation de fin de formation.</p></div>
 </div>
 </section>
 
-<section id="sessions" style="max-width: 1280px; margin: 0 auto; padding: 0 32px 88px; display: flex; flex-direction: column; gap: 28px">
-<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 44px; line-height: 1; letter-spacing: -0.03em; font-weight: 700">Prochaines sessions</h2>
-<div style="overflow-x: auto; border-radius: 24px; border: 1px solid #DDE1EE">
-<table style="width: 100%; min-width: 720px; border-collapse: collapse; font-size: 16px">
+<section id="sessions" class="wrap section--sm" style="display:flex; flex-direction:column; gap:28px">
+<h2 class="h2" data-split style="--h2:44px">Prochaines sessions</h2>
+<div class="table-wrap" data-reveal>
+<table class="sessions">
 <thead>
-<tr style="background: #EEF1FA; text-align: left">
-<th scope="col" style="padding: 16px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">DATES</th>
-<th scope="col" style="padding: 16px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">LIEU</th>
-<th scope="col" style="padding: 16px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">FORMAT</th>
-<th scope="col" style="padding: 16px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #4C5375">PLACES</th>
-<th scope="col" style="padding: 16px 24px"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Action</span></th>
-</tr>
+<tr><th scope="col">DATES</th><th scope="col">LIEU</th><th scope="col">FORMAT</th><th scope="col">PLACES</th><th scope="col"><span class="sr-only">Action</span></th></tr>
 </thead>
 <tbody>
-<tr style="border-top: 1px solid #DDE1EE">
-<td style="padding: 18px 24px; font-weight: 700">[JJ–JJ mois]</td>
-<td style="padding: 18px 24px">[Ville]</td>
-<td style="padding: 18px 24px">Présentiel</td>
-<td style="padding: 18px 24px"><span style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 80px; height: 6px; border-radius: 99px; background: #EEF1F8; display: block; overflow: hidden"><span style="display: block; width: 70%; height: 100%; border-radius: 99px; background: linear-gradient(90deg, #3ED3F4, #4B3BDB)"></span></span>[3] restantes</span></td>
-<td style="padding: 12px 24px; text-align: right"><button type="button" style="font-family: inherit; font-size: 14px; font-weight: 600; color: #FFFFFF; background: #2F5FE8; border: 0; border-radius: 10px; padding: 12px 16px; min-height: 44px; cursor: pointer">S’inscrire</button></td>
+<tr>
+<td data-label="DATES">[JJ–JJ mois]</td>
+<td data-label="LIEU">[Ville]</td>
+<td data-label="FORMAT">Présentiel</td>
+<td data-label="PLACES"><span class="seats"><span class="bar"><i style="--w:70%"></i></span>[3] restantes</span></td>
+<td><button type="button" class="btn btn--xs" data-open="contact" data-subject="Inscription — Manager une équipe au quotidien — session [JJ–JJ mois], [Ville]">S’inscrire</button></td>
 </tr>
-<tr style="border-top: 1px solid #DDE1EE">
-<td style="padding: 18px 24px; font-weight: 700">[JJ–JJ mois]</td>
-<td style="padding: 18px 24px">[Ville]</td>
-<td style="padding: 18px 24px">Présentiel</td>
-<td style="padding: 18px 24px"><span style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 80px; height: 6px; border-radius: 99px; background: #EEF1F8; display: block; overflow: hidden"><span style="display: block; width: 30%; height: 100%; border-radius: 99px; background: linear-gradient(90deg, #3ED3F4, #4B3BDB)"></span></span>[7] restantes</span></td>
-<td style="padding: 12px 24px; text-align: right"><button type="button" style="font-family: inherit; font-size: 14px; font-weight: 600; color: #0B1130; background: #FFFFFF; border: 1.5px solid #0B1130; border-radius: 10px; padding: 12px 16px; min-height: 44px; cursor: pointer">S’inscrire</button></td>
+<tr>
+<td data-label="DATES">[JJ–JJ mois]</td>
+<td data-label="LIEU">[Ville]</td>
+<td data-label="FORMAT">Présentiel</td>
+<td data-label="PLACES"><span class="seats"><span class="bar"><i style="--w:30%"></i></span>[7] restantes</span></td>
+<td><button type="button" class="btn btn--outline btn--xs" data-open="contact" data-subject="Inscription — Manager une équipe au quotidien — session [JJ–JJ mois], [Ville]">S’inscrire</button></td>
 </tr>
-<tr style="border-top: 1px solid #DDE1EE">
-<td style="padding: 18px 24px; font-weight: 700">Sur demande</td>
-<td style="padding: 18px 24px">Dans vos locaux</td>
-<td style="padding: 18px 24px">Intra-entreprise</td>
-<td style="padding: 18px 24px">Groupe dédié</td>
-<td style="padding: 12px 24px; text-align: right"><button type="button" style="font-family: inherit; font-size: 14px; font-weight: 600; color: #0B1130; background: #FFFFFF; border: 1.5px solid #0B1130; border-radius: 10px; padding: 12px 16px; min-height: 44px; cursor: pointer">Demander un devis</button></td>
+<tr>
+<td data-label="DATES">Sur demande</td>
+<td data-label="LIEU">Dans vos locaux</td>
+<td data-label="FORMAT">Intra-entreprise</td>
+<td data-label="PLACES">Groupe dédié</td>
+<td><button type="button" class="btn btn--outline btn--xs" data-open="contact" data-subject="Demande de devis intra — Manager une équipe au quotidien">Demander un devis</button></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 
-<section style="padding: 0 32px 88px">
-<div style="max-width: 1216px; margin: 0 auto; border-radius: 40px; background: #EEF1FA; padding: 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
-<img src="assets/img/photo-portrait-rh.jpg" alt="Portrait d’une responsable RH cliente" style="width: 180px; height: 220px; border-radius: 24px; object-fit: cover; object-position: 50% 22%; display: block; background: #5B6178">
-<figure style="flex: 1 1 520px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 18px">
-<blockquote style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 30px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 500">« [Avis d’un participant ou d’une cliente sur cette formation, en une ou deux phrases.] »</blockquote>
-<figcaption style="font-size: 15px; color: #4C5375"><strong style="color: #0B1130">[Prénom Nom]</strong> · [Poste], [Entreprise]</figcaption>
+<section class="quote-band">
+<div class="quote-band__panel" data-reveal>
+<img src="assets/img/photo-portrait-rh.jpg" alt="Portrait d’une responsable RH cliente" loading="lazy">
+<figure>
+<blockquote>« [Avis d’un participant ou d’une cliente sur cette formation, en une ou deux phrases.] »</blockquote>
+<figcaption><strong>[Prénom Nom]</strong> · [Poste], [Entreprise]</figcaption>
 </figure>
 </div>
 </section>
 
-<section aria-label="Formations liées" style="max-width: 1280px; margin: 0 auto; padding: 0 32px 96px; display: flex; flex-direction: column; gap: 24px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
-<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 36px; line-height: 1; letter-spacing: -0.03em; font-weight: 700">Pour aller plus loin</h2>
-<a href="categorie-management-leadership.html" style="font-size: 16px; font-weight: 600; text-decoration: underline; text-underline-offset: 6px; padding: 12px 0">Toute la catégorie</a>
+<section aria-label="Formations liées" class="wrap" style="padding-bottom:clamp(96px, 12vw, 140px); display:flex; flex-direction:column; gap:24px">
+<div class="section-head">
+<h2 class="h2" style="--h2:36px" data-split>Pour aller plus loin</h2>
+<a class="link-underline" href="categorie-management-leadership.html">Toute la catégorie</a>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 16px">
-<a href="fiche-manager-equipe.html" style="flex: 1 1 300px; min-width: 0; padding: 24px; border-radius: 22px; border: 1px solid #DDE1EE; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; color: #0B1130"><span style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 22px; font-weight: 600">Manager une équipe à distance</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: #4C5375">2 JOURS · DISTANCIEL</span></span><span aria-hidden="true" style="font-size: 20px; font-weight: 700; color: #2F5FE8">→</span></a>
-<a href="fiche-manager-equipe.html" style="flex: 1 1 300px; min-width: 0; padding: 24px; border-radius: 22px; border: 1px solid #DDE1EE; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; color: #0B1130"><span style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 22px; font-weight: 600">Conduire les entretiens annuels</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: #4C5375">1 JOUR · PRÉSENTIEL</span></span><span aria-hidden="true" style="font-size: 20px; font-weight: 700; color: #2F5FE8">→</span></a>
-<a href="fiche-manager-equipe.html" style="flex: 1 1 300px; min-width: 0; padding: 24px; border-radius: 22px; border: 1px solid #DDE1EE; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; color: #0B1130"><span style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 22px; font-weight: 600">Gérer les tensions et les conflits</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: #4C5375">2 JOURS · PRÉSENTIEL</span></span><span aria-hidden="true" style="font-size: 20px; font-weight: 700; color: #2F5FE8">→</span></a>
+<div class="rel" data-stagger="80">
+<a href="fiche-manager-equipe.html"><span class="rel__text"><span class="rel__title">Manager une équipe à distance</span><span class="mono muted">2 JOURS · DISTANCIEL</span></span><span class="rel__arrow" aria-hidden="true">→</span></a>
+<a href="fiche-manager-equipe.html"><span class="rel__text"><span class="rel__title">Conduire les entretiens annuels</span><span class="mono muted">1 JOUR · PRÉSENTIEL</span></span><span class="rel__arrow" aria-hidden="true">→</span></a>
+<a href="fiche-manager-equipe.html"><span class="rel__text"><span class="rel__title">Gérer les tensions et les conflits</span><span class="mono muted">2 JOURS · PRÉSENTIEL</span></span><span class="rel__arrow" aria-hidden="true">→</span></a>
 </div>
 </section>
 
-<footer style="background: #0B1130; color: #B9C0E0">
-<div style="max-width: 1280px; margin: 0 auto; padding: 56px 32px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 32px">
-<img src="assets/img/logo-skill360-negatif.png" alt="Skill360" style="height: 40px; width: auto; display: block">
-<nav aria-label="Liens de pied de page" style="display: flex; gap: 28px; flex-wrap: wrap; font-size: 15px">
-<a href="formations.html" style="color: #FFFFFF; text-decoration: none">Formations</a>
-<a href="index.html" style="color: #FFFFFF; text-decoration: none">Accueil</a>
-<a href="#mentions" style="color: #FFFFFF; text-decoration: none">Mentions légales</a>
-<a href="#contact" style="color: #FFFFFF; text-decoration: none">Contact</a>
+</main>
+
+<div class="buybar" role="region" aria-label="Inscription rapide">
+<span class="buybar__text"><span class="buybar__title">Manager une équipe au quotidien</span><span class="buybar__meta">3 JOURS · [0 000] € HT · PROCHAINE [JJ/MM]</span></span>
+<a class="btn btn--ghost-light btn--xs" href="#sessions">Voir les sessions</a>
+<button type="button" class="btn btn--xs" data-open="contact" data-subject="Inscription — Manager une équipe au quotidien">S’inscrire</button>
+</div>
+
+<footer class="site-footer">
+<div class="site-footer__inner">
+<img class="site-footer__logo" src="assets/img/logo-skill360-negatif.png" alt="Skill360" loading="lazy">
+<nav class="site-footer__nav" aria-label="Liens de pied de page">
+<a href="formations.html">Formations</a>
+<a href="index.html">Accueil</a>
+<a href="#mentions">Mentions légales</a>
+<a href="#contact" data-open="contact">Contact</a>
 </nav>
-<span style="flex-basis: 100%; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.14); font-family: 'JetBrains Mono', monospace; font-size: 12px">© [ANNÉE] SKILL360 — FORMATION &amp; DÉVELOPPEMENT DES COMPÉTENCES</span>
+<div class="site-footer__legal">
+<span>© <span data-year>[ANNÉE]</span> SKILL360 — FORMATION &amp; DÉVELOPPEMENT DES COMPÉTENCES</span>
+<button type="button" class="to-top" data-to-top>HAUT DE PAGE <svg class="i i--sm" aria-hidden="true"><use href="#i-up"/></svg></button>
+</div>
 </div>
 </footer>
-
-</div>
 </body>
 </html>
