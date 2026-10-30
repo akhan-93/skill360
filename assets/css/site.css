@@ -253,10 +253,10 @@ button { font: inherit; color: inherit; }
   transition: padding .4s var(--ease);
 }
 .is-scrolled .site-header__inner { padding-block: 14px; }
-.logo { position: relative; z-index: 2; display: block; }
+.logo { position: relative; z-index: 2; display: block; flex-shrink: 0; }
 .logo img { height: 38px; width: auto; }
 .menu { display: flex; align-items: center; justify-content: space-between; flex: 1; gap: 24px; }
-.nav { display: flex; gap: 32px; margin-inline: auto; font-size: 16px; font-weight: 500; }
+.nav { display: flex; gap: clamp(18px, 2.1vw, 32px); margin-inline: auto; font-size: 16px; font-weight: 500; white-space: nowrap; }
 .nav a { position: relative; color: var(--ink); text-decoration: none; padding: 6px 0; }
 .nav a::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px;
@@ -266,7 +266,16 @@ button { font: inherit; color: inherit; }
 .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
 .nav a[aria-current="page"] { color: var(--accent); font-weight: 700; }
 .header-actions { display: flex; gap: 8px; align-items: center; }
-.header-link { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 12px 14px; }
+.header-link { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 12px 14px; white-space: nowrap; }
+.btn--tel { --bd: var(--line); --hover-bg: var(--warm); --hover-fg: var(--ink); font-variant-numeric: tabular-nums; }
+.btn--tel .i { color: var(--warm-ink); transition: color .3s; }
+.btn--tel:hover { box-shadow: 0 16px 32px -16px rgba(255, 122, 61, .75); }
+.btn--tel:hover .i { color: var(--ink); transform: none; animation: ring .7s var(--ease); }
+@keyframes ring { 20% { rotate: -16deg; } 40% { rotate: 13deg; } 60% { rotate: -8deg; } 80% { rotate: 4deg; } }
+@media (min-width: 1181px) and (max-width: 1480px) {
+  .btn--tel { padding-inline: 13px; }
+  .btn--tel .btn__label { display: none; }
+}
 .nav-toggle {
   display: none; position: relative; z-index: 2;
   width: 48px; height: 48px; border-radius: 14px; border: 0; background: var(--soft); cursor: pointer;
@@ -280,7 +289,7 @@ button { font: inherit; color: inherit; }
 .menu-open .nav-toggle span:first-child { top: 23px; transform: rotate(45deg); }
 .menu-open .nav-toggle span:last-child { top: 23px; transform: rotate(-45deg); }
 
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
   .nav-toggle { display: block; }
   .menu {
     position: fixed; inset: 0; z-index: 1;

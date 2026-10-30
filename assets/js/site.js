@@ -100,7 +100,7 @@
     toggle.addEventListener('click', () => setOpen(!doc.classList.contains('menu-open')));
     menu.addEventListener('click', e => { if (e.target.closest('a, button')) setOpen(false); });
     addEventListener('keydown', e => { if (e.key === 'Escape' && doc.classList.contains('menu-open')) { setOpen(false); toggle.focus(); } });
-    matchMedia('(min-width: 1081px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+    matchMedia('(min-width: 1181px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
   });
 
   /* ---------- Titres : apparition mot par mot ---------- */

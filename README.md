@@ -43,6 +43,7 @@ En texte sur fond clair, utiliser `--warm-ink` (`#C2410C`) pour respecter le con
 ## À configurer avant mise en ligne
 
 - **Envoi du formulaire** : renseigner `CONTACT_ENDPOINT` en haut de `assets/js/site.js` (Formspree, API…). Tant qu’il est vide, le formulaire fonctionne en **mode démo** (confirmation affichée, rien n’est envoyé).
+- **Téléphone de l’en-tête** : bouton à côté de « Nous contacter » sur les 4 pages ; remplacer `[01 23 45 67 89]` (texte et `aria-label`) et `tel:+33123456789`. Entre 1181 et 1480 px de large, seule l’icône s’affiche.
 - **Contenus entre crochets** : `[Intitulé formation existante 1]`, `[000]+`, `[0 000] €`, `[JJ/MM]`, `[TÉLÉPHONE]`, témoignages, etc.
 - **Programme de la fiche** : les points des modules 02 à 04 sont des propositions entre crochets, à valider.
 - **Villes de la carte** : la liste (16 villes, une par région au minimum) est un exemple. Elle se modifie dans `index.html` (boutons `.city-chip` avec `data-lat` / `data-lon` / `data-region`) ; les épingles suivent automatiquement. Les dates et nombres de sessions affichés sont des placeholders (`[JJ/MM]`, `[0]`) dans le module « Carte de France » de `site.js`.
